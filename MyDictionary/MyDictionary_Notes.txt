@@ -1,0 +1,95 @@
+What is a generic?
+Why would we want to use a generic?
+
+Generically manipulate in a reusable fashion
+Types themselves are parameters or placeholders
+
+List<string> names = new List<string>();
+	names.add("James");
+	names.Add("Tom");
+	names.Add("Harry");
+
+Console.Writeline("Third name is {0}", name[2]);
+>>Prints Harry
+
+names.Remove(1);
+names.Count();
+>>Output is going to be 2
+
+public class Stack<T>
+{
+    private List<T> myList{get; set;}
+    public Stack()
+    {
+	myList = new List<T>();
+    }
+    public Stack(int capacity)
+    {
+        myList = new List<T>(capacity);
+    }
+    public void Push(T myThing)
+    {
+        myList.Add(myThing);
+    }
+
+    public T Pop()
+    {
+	int lastIndex = myList.Count -1;
+	T returnValue = myList[lastIndex];
+	myList.Remove[lastIndex];
+	return returnValue;	
+    }
+}
+
+
+
+
+// Two-dimensional array.
+int[,] array2D = new int[,] { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
+// The same array with dimensions specified.
+int[,] array2Da = new int[4, 2] { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
+// A similar array with string elements.
+string[,] array2Db = new string[3, 2] { { "one", "two" }, { "three", "four" },
+                                        { "five", "six" } };
+
+// Three-dimensional array.
+int[, ,] array3D = new int[,,] { { { 1, 2, 3 }, { 4, 5, 6 } }, 
+                                 { { 7, 8, 9 }, { 10, 11, 12 } } };
+// The same array with dimensions specified.
+int[, ,] array3Da = new int[2, 2, 3] { { { 1, 2, 3 }, { 4, 5, 6 } }, 
+                                       { { 7, 8, 9 }, { 10, 11, 12 } } };
+
+// Accessing array elements.
+System.Console.WriteLine(array2D[0, 0]);
+System.Console.WriteLine(array2D[0, 1]);
+System.Console.WriteLine(array2D[1, 0]);
+System.Console.WriteLine(array2D[1, 1]);
+System.Console.WriteLine(array2D[3, 0]);
+System.Console.WriteLine(array2Db[1, 0]);
+System.Console.WriteLine(array3Da[1, 0, 1]);
+System.Console.WriteLine(array3D[1, 1, 2]);
+
+// Getting the total count of elements or the length of a given dimension.
+var allLength = array3D.Length;
+var total = 1;
+for (int i = 0; i < array3D.Rank; i++) {
+    total *= array3D.GetLength(i);
+}
+System.Console.WriteLine("{0} equals {1}", allLength, total);
+You also can initialize the array without specifying the rank.
+C#
+int[,] array4 = { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };
+If you choose to declare an array variable without initialization, you must use the new operator to assign an array to the variable. The use of new is shown in the following example.
+C#
+int[,] array5;
+array5 = new int[,] { { 1, 2 }, { 3, 4 }, { 5, 6 }, { 7, 8 } };   // OK
+//array5 = {{1,2}, {3,4}, {5,6}, {7,8}};   // Error
+The following example assigns a value to a particular array element.
+C#
+array5[2, 1] = 25;
+Similarly, the following example gets the value of a particular array element and assigns it to variable elementValue.
+C#
+int elementValue = array5[2, 1];
+The following code example initializes the array elements to default values (except for jagged arrays).
+C#
+int[,] array6 = new int[10, 10];
